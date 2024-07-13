@@ -16,5 +16,4 @@ export default {
 </script>
 
 <style>
-@import '~view-design/dist/styles/iview.css';
 </style>
