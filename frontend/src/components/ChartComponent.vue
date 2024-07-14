@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <Select v-model="selectedId" @on-change="fetchData">
       <Option v-for="id in ids" :key="id" :value="id">{{ id }}</Option>
     </Select>

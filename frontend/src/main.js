@@ -1,16 +1,13 @@
-import './assets/main.css'
-import App from './App.vue'
-import Vue from 'vue';
+import { createApp } from 'vue';
+import App from './App.vue';
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import ECharts from 'vue-echarts';
-import 'echarts';
+import 'echarts/lib/chart/line';
 
-Vue.use(ViewUI);
-Vue.component('v-chart', ECharts);
+const app = createApp(App);
 
-Vue.config.productionTip = false;
+app.use(ViewUI);
+app.component('v-chart', ECharts);
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app');
+app.mount('#app');
