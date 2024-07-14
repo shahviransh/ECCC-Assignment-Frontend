@@ -14,7 +14,8 @@
     "echarts": "^5.5.1",
     "view-design": "^4.7.0",
     "vue": "^3.4.29",
-    "vue-echarts": "^6.7.3"
+    "vue-echarts": "^6.7.3",
+    "iview":"^3.5.4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
