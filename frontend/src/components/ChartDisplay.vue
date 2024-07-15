@@ -21,7 +21,7 @@ use([
 
 provide(THEME_KEY, 'dark');
 
-const props = defineProps({
+defineProps({
     option: {
         type: Object,
         required: true,

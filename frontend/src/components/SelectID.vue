@@ -8,7 +8,7 @@
 <script setup>
 import { ref, defineProps, defineEmits } from 'vue';
 
-const props = defineProps({
+defineProps({
     ids: {
         type: Array,
         required: true,
