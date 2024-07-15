@@ -1,37 +1,16 @@
 <template>
   <div id="app">
-    <select
-      v-model="selectedID"
-      style="width: 200px; margin-bottom: 20px;"
-      placeholder="Select ID"
-      @change="fetchData"
-    >
-      <option v-for="id in ids" :key="id" :value="id">{{ id }}</option>
-    </select>
-    <v-chart class="chart" :option="option" autoresize />
+    <SelectID @idSelected="fetchData" :ids="ids" />
+    <ChartDisplay :option="option" />
   </div>
 </template>
 
 <script setup>
-import { use } from 'echarts/core';
-import { CanvasRenderer } from 'echarts/renderers';
-import { LineChart } from 'echarts/charts';
-import { TitleComponent, TooltipComponent, GridComponent } from 'echarts/components';
-import VChart, { THEME_KEY } from 'vue-echarts';
-import { ref, provide, onMounted } from 'vue';
-
-use([
-  TitleComponent,
-  TooltipComponent,
-  GridComponent,
-  LineChart,
-  CanvasRenderer,
-]);
-
-provide(THEME_KEY, 'dark');
+import { ref, onMounted } from 'vue';
+import SelectID from './components/SelectID.vue';
+import ChartDisplay from './components/ChartDisplay.vue';
 
 const ids = ref([]);
-const selectedID = ref(null);
 const option = ref({
   title: {
     text: 'Runoff Data',
@@ -62,15 +41,13 @@ const fetchIDs = () => {
   fetch('http://127.0.0.1:5000/ids')
     .then(response => response.json())
     .then(data => {
-      for (const id of data) {
-        ids.value.push(id);
-      }
+      ids.value = data;
     });
 };
 
-const fetchData = () => {
-  if (selectedID.value !== null && selectedID.value !== undefined) {
-    fetch(`http://127.0.0.1:5000/data?id=${selectedID.value}`)
+const fetchData = (selectedID) => {
+  if (selectedID !== null && selectedID !== undefined) {
+    fetch(`http://127.0.0.1:5000/data?id=${selectedID}`)
       .then(response => response.json())
       .then(data => {
         option.value.xAxis.data = data.time;
@@ -93,27 +70,5 @@ onMounted(() => {
   height: 100vh;
   background-color: #1f1f1f; /* Dark background color */
   color: #fff; /* Light text color */
-}
-
-.custom-select {
-  width: 200px;
-  margin-bottom: 20px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #333; /* Dark background color */
-  color: #fff; /* Light text color */
-}
-
-.custom-select option {
-  background-color: #333; /* Dark background color */
-  color: #fff; /* Light text color */
-}
-
-.chart {
-  width: 80%; /* Adjust as needed */
-  max-width: 800px; /* Adjust as needed */
-  height: 60vh;
-  margin-top: 20px;
 }
 </style>
