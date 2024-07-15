@@ -13,7 +13,7 @@ import ChartDisplay from './components/ChartDisplay.vue';
 const ids = ref([]);
 const option = ref({
   title: {
-    text: 'Runoff Data',
+    text: 'Rivers Runoff Data',
     left: 'center',
   },
   tooltip: {

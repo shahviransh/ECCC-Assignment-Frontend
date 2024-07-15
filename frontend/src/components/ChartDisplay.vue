@@ -31,11 +31,11 @@ defineProps({
 
 <style scoped>
 .chart {
-    width: 80%;
+    width: 100%;
     /* Adjust as needed */
-    max-width: 800px;
+    max-width: 100vw;
     /* Adjust as needed */
-    height: 60vh;
+    height: 80vh;
     margin-top: 20px;
 }
 </style>
