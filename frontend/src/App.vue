@@ -38,7 +38,7 @@ const option = ref({
 });
 
 const fetchIDs = () => {
-  fetch('http://127.0.0.1:5000/ids')
+  fetch('https://eccc-assignment-backend.vercel.app/ids')
     .then(response => response.json())
     .then(data => {
       ids.value = data;
@@ -47,7 +47,7 @@ const fetchIDs = () => {
 
 const fetchData = (selectedID) => {
   if (selectedID !== null && selectedID !== undefined) {
-    fetch(`http://127.0.0.1:5000/data?id=${selectedID}`)
+    fetch(`https://eccc-assignment-backend.vercel.app/data?id=${selectedID}`)
       .then(response => response.json())
       .then(data => {
         option.value.xAxis.data = data.time;
