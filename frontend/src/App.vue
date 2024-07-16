@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!-- Include the SelectID and ChartDisplay components -->
     <SelectID @idSelected="fetchData" :ids="ids" />
     <ChartDisplay :option="option" />
   </div>
@@ -10,6 +11,7 @@ import { ref, onMounted } from 'vue';
 import SelectID from './components/SelectID.vue';
 import ChartDisplay from './components/ChartDisplay.vue';
 
+// Define reactive variables
 const ids = ref([]);
 const option = ref({
   title: {
@@ -37,6 +39,7 @@ const option = ref({
   ],
 });
 
+// Function to fetch IDs from the API
 const fetchIDs = () => {
   fetch('https://eccc-assignment-backend.vercel.app/ids')
     .then(response => response.json())
@@ -45,6 +48,7 @@ const fetchIDs = () => {
     });
 };
 
+// Function to fetch data based on the selected ID
 const fetchData = (selectedID) => {
   if (selectedID !== null && selectedID !== undefined) {
     fetch(`https://eccc-assignment-backend.vercel.app/data?id=${selectedID}`)
@@ -56,6 +60,7 @@ const fetchData = (selectedID) => {
   }
 };
 
+// Fetch IDs when the component is mounted
 onMounted(() => {
   fetchIDs();
 });
@@ -68,7 +73,9 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #1f1f1f; /* Dark background color */
-  color: #fff; /* Light text color */
+  background-color: #1f1f1f;
+  /* Dark background color */
+  color: #fff;
+  /* Light text color */
 }
 </style>

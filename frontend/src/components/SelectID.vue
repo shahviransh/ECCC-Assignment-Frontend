@@ -1,4 +1,5 @@
 <template>
+    <!-- Dropdown to select an ID -->
     <select v-model="selectedID" class="custom-select" @change="emitSelectedID">
         <option value="" disabled selected>Select ID</option>
         <option v-for="id in ids" :key="id" :value="id">{{ id }}</option>
@@ -8,6 +9,7 @@
 <script setup>
 import { ref, defineProps, defineEmits } from 'vue';
 
+// Define props and emits
 defineProps({
     ids: {
         type: Array,
@@ -16,9 +18,9 @@ defineProps({
 });
 
 const emits = defineEmits(['idSelected']);
-
 const selectedID = ref(null);
 
+// Emit the selected ID
 const emitSelectedID = () => {
     emits('idSelected', selectedID.value);
 };

@@ -1,4 +1,5 @@
 <template>
+    <!-- Chart component to display the data -->
     <v-chart class="chart" :option="option" autoresize />
 </template>
 
@@ -11,6 +12,7 @@ import { TitleComponent, TooltipComponent, GridComponent } from 'echarts/compone
 import VChart, { THEME_KEY } from 'vue-echarts';
 import { provide } from 'vue';
 
+// Use the necessary ECharts components
 use([
     TitleComponent,
     TooltipComponent,
@@ -19,8 +21,10 @@ use([
     CanvasRenderer,
 ]);
 
+// Provide the theme for the chart
 provide(THEME_KEY, 'dark');
 
+// Define props for the chart
 defineProps({
     option: {
         type: Object,
