@@ -1,15 +1,17 @@
 <template>
-    <!-- Dropdown to select an ID -->
-    <select v-model="selectedID" class="custom-select" @change="emitSelectedID">
-        <option value="" disabled selected>Select ID</option>
-        <option v-for="id in ids" :key="id" :value="id">{{ id }}</option>
-    </select>
+    <div>
+        <!-- Select ID component to choose the ID from a list of IDs -->
+        <select v-model="selectedID" class="custom-select" @change="emitSelectedID">
+            <option value="" disabled selected>Select ID</option>
+            <option v-for="id in ids" :key="id" :value="id">{{ id }}</option>
+        </select>
+    </div>
 </template>
 
 <script setup>
 import { ref, defineProps, defineEmits } from 'vue';
 
-// Define props and emits
+// Define props for the component
 defineProps({
     ids: {
         type: Array,
@@ -17,6 +19,7 @@ defineProps({
     },
 });
 
+// Define emits for the component
 const emits = defineEmits(['idSelected']);
 const selectedID = ref(null);
 
@@ -29,22 +32,16 @@ const emitSelectedID = () => {
 <style scoped>
 .custom-select {
     width: 200px;
-    margin-bottom: 20px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #333;
-    /* Dark background color */
     color: #fff;
-    /* Light text color */
     text-align: center;
-    /* Center text inside the dropdown */
 }
 
 .custom-select option {
     background-color: #333;
-    /* Dark background color */
     color: #fff;
-    /* Light text color */
 }
 </style>
