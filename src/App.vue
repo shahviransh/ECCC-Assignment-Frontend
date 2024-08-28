@@ -44,7 +44,7 @@ const option = ref({
   },
   yAxis: {
     type: 'value',
-    name: 'Runoff (m³/s)',  // Y-axis title
+    name: 'Runoff',  // Y-axis title
     nameLocation: 'middle',
     nameTextStyle: {
       fontSize: 14,
