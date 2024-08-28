@@ -28,18 +28,18 @@ const option = ref({
     trigger: 'axis',
     formatter: '{a} <br/>{b} : {c}',
   },
-  grid: { top: 8, right: 8, bottom: 40, left: 40 },
+  grid: { top: 8, right: 8, bottom: 50, left: 50 },
   xAxis: {
     type: 'category',
     data: [],
     name: 'Time',  // Name of the x-axis
     nameLocation: 'middle', // Position at the middle of the axis
     nameTextStyle: {
-      fontSize: 14,  // Increase font size for visibility
-      padding: 0,  // Increase padding for better placement
+      fontSize: 16,  // Increase font size for visibility
+      padding: 10,  // Increase padding for better placement
     },
     axisLabel: {
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   yAxis: {
@@ -47,8 +47,11 @@ const option = ref({
     name: 'Runoff',  // Y-axis title
     nameLocation: 'middle',
     nameTextStyle: {
+      fontSize: 16,
+      padding: 10,  // Adjust padding for better placement
+    },
+    axisLabel: {
       fontSize: 14,
-      padding: 0,  // Adjust padding for better placement
     },
   },
   series: [
