@@ -6,7 +6,7 @@
       <!--- Button to fetch data based on the selected ID -->
       <button @click="fetchData" class="fetch-button">Fetch Data</button>
     </div>
-    <ChartDisplay :option="option" />
+    <ChartDisplay :option="option" class="chart" />
   </div>
 </template>
 
@@ -28,13 +28,28 @@ const option = ref({
     trigger: 'axis',
     formatter: '{a} <br/>{b} : {c}',
   },
-  grid: { top: 8, right: 8, bottom: 24, left: 36 },
+  grid: { top: 8, right: 8, bottom: 40, left: 40 },
   xAxis: {
     type: 'category',
     data: [],
+    name: 'Time',  // Name of the x-axis
+    nameLocation: 'middle', // Position at the middle of the axis
+    nameTextStyle: {
+      fontSize: 14,  // Increase font size for visibility
+      padding: 0,  // Increase padding for better placement
+    },
+    axisLabel: {
+      fontSize: 12,
+    },
   },
   yAxis: {
     type: 'value',
+    name: 'Runoff (m³/s)',  // Y-axis title
+    nameLocation: 'middle',
+    nameTextStyle: {
+      fontSize: 14,
+      padding: 0,  // Adjust padding for better placement
+    },
   },
   series: [
     {
@@ -91,7 +106,7 @@ onMounted(() => {
 .selection-container {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 .fetch-button {

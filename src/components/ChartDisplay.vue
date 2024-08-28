@@ -39,7 +39,7 @@ defineProps({
     /* Adjust as needed */
     max-width: 100vw;
     /* Adjust as needed */
-    height: 80vh;
+    height: 100vh;
     margin-top: 20px;
 }
 </style>
